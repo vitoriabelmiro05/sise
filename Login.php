@@ -18,14 +18,14 @@ include('conexao.php');
 
  $query= "select * from usuario where cpf= '{$CPF}' and senha = '{$SENHA}'; ";
  $result= mysqli_query($conn, $query);
- $sql = mysql_fetch_assoc($result);
+ //$sql = mysqli_fetch_assoc($result);
  
- $NOME = $sql['NOME'];
+ //$NOME = $sql['NOME'];
 
  $row= mysqli_num_rows($result);
  //echo $row; exit;
  if($row==1){
-     $_SESSION['NOME']= $NOME;
+     $_SESSION['CPF']= $CPF;
      header('Location: painel.php');
      exit();
 

@@ -132,7 +132,7 @@ endif;
        
     </ul>
 </nav>
-    <p>              </p>
+   
    
 <div class="container" >
     <img src="imagens/LOGO.png" style="width: 300px;">
