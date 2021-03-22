@@ -9,112 +9,41 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+ <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>s
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="shortcut icon" href="favicon_io (1)/favicon.ico" type="image/x-icon">
+-->
+<link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap"
+      rel="stylesheet"
+    />     
+<link rel="shortcut icon" href="favicon_io (1)/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
+  <!-- Estilos -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Scripts (jQuery não pode ser o slim que vem do Boostrap) -->
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/bf7e05c402.js" crossorigin="anonymous"></script>
+    
+    
     <script type="text/javascript">
     $(document).ready(function(){
       $('#TELEFONE').mask('(00) 0000-0000');
      $('#CPF').mask('000.000.000-00');
-      $('#RG').mask('00000.000-0'); 
-      
+      $('#RG').mask('00000.000-0');      
      });
 </script>
     
     <title>Sistema de estágio</title>
-    <style>
-         body {
-           background-color: #f18322;
-            font-family: cursive;
-            font-size: 20px;
-            text-align: justify;
-            
-            
-        }
-input[type=text], select {
-  width: 95%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  box-sizing: border-box;
-}
-        input[type=password], select {
-  width: 95%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  box-sizing: border-box;
-}
-        input[type=email], select {
-  width: 95%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  box-sizing: border-box;
-}
-
-input[type=submit] {
-  width: 50%;
-  background-color: #028c8c;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
-}
-
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-
-div {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-}
-         #menu ul li a:hover {
-    background-color:#D6D6D6;
-    color: #6D6D6D;
-    border-bottom:3px solid #f18322;
-}
-        #menu ul {
-    padding:0px;
-    margin:0px;
-    background-color:#000000;
-    list-style:none;
-                         
-
-}
-        #menu ul li { display: inline; }
-        #menu ul li a {
-    padding: 2px 50px;
-    display: inline-block;
-
-    /* visual do link */
-    background-color:#000000;
-    color: #ffffff;
-    text-decoration: none;
-    border-bottom:3px solid #EDEDED;
-}
-        .container{
-            width: 900px;
-            background-color: black;
-             border-radius: 40px;
-                        
-            display: flex;
-  align-items: center;
-  justify-content: center;
-        }
-</style>
+    <link rel="stylesheet" href="cadastro.css">
 <body>
   
     <?php
@@ -125,13 +54,12 @@ endif;
 ?>
 
  <nav id="menu">
-    <ul>
-       
+    <ul>    
         <li><a href="index.html">Página Inicial</a></li>
-        <li><a href="Login.html">Login</a></li>
-       
+        <li><a href="Login.html">Login</a></li>    
     </ul>
 </nav>
+
    
    
 <div class="container" >
