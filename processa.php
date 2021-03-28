@@ -10,16 +10,56 @@ $RG = filter_input(INPUT_POST, 'RG', FILTER_SANITIZE_STRING);
 $TELEFONE = filter_input(INPUT_POST, 'TELEFONE', FILTER_SANITIZE_STRING);
 $FUNCAO = filter_input(INPUT_POST, 'FUNCAO', FILTER_SANITIZE_STRING);
 
+//verificação de cpf valido
+if(isset( $CPF)){
+	$CPF = preg_replace("/[^0-9]/", "",  $CPF);
+	$CPF = str_pad( $CPF, 11, '0', STR_PAD_LEFT);
+
+
+   if (strlen($CPF) != 11) {
+	   $erro= 1;
+   }
+  
+   else if ( $CPF== '00000000000' || 
+		$CPF == '11111111111' || 
+		$CPF == '22222222222' || 
+		$CPF == '33333333333' || 
+		$CPF == '44444444444' || 
+		$CPF == '55555555555' || 
+		$CPF == '66666666666' || 
+		$CPF == '77777777777' || 
+		$CPF == '88888888888' || 
+		$CPF == '99999999999') {
+	   $erro= 1;
+	} else {   
+	   for ($t = 9; $t < 11; $t++) {
+
+		   for ($d = 0, $c = 0; $c < $t; $c++) {
+			   $d +=  $CPF{$c} * (($t + 1) - $c);
+		   }
+		   $d = ((10 * $d) % 11) % 10;
+		   if ( $CPF{$c} != $d) {
+				$erro= 1;
+			$_SESSION['msg'] = "<p style='color:red;'>Usuário não foi cadastrado, CPF invalido</p>";
+	header("Location: cadastro.php");
+
+		   }
+	   }
+	   $erro= 0;
+   } 
+}
+
+  
 
 
 $result_usuario = "INSERT INTO usuario (cpf,nome,email,senha,rg,telefone,funcao) VALUES ('$CPF','$NOME','$EMAIL','$SENHA','$RG','$TELEFONE','$FUNCAO')";
 $resultado_usuario = mysqli_query($conn, $result_usuario);
 
 if(mysqli_insert_id($conn)){
-	$_SESSION['msg'] = "<p style='color:green;'>Usuário cadastrado com sucesso</p>";
+	$_SESSION['msg'] = "<p style='color:green;'>Usuário cadastrado com sucesso.</p>";
 	header("Location: Login.html");
 }else{
-	$_SESSION['msg'] = "<p style='color:red;'>Usuário não foi cadastrado com sucesso</p>";
-	header("Location: Login.html");
+	$_SESSION['msg'] = "<p style='color:red;'>Usuário não foi cadastrado, erro de conexao.</p>";
+	header("Location: cadastro.php");
 }
 

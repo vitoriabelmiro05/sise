@@ -66,7 +66,7 @@ endif;
 
    <input type="email" id="EMAIL" name="EMAIL" placeholder="E-mail">
     <input type="text" id="RG" name="RG" placeholder="RG">
- <input type="text" id="CPF" name="CPF" placeholder="CPF">
+ <input type="text" id="CPF" name="CPF" placeholder="CPF" minlength="14"  maxlength="14">
 <input type="text" id="TELEFONE" name="TELEFONE" placeholder="Telefone">
  
     <input type="password" id="SENHA" name="SENHA" placeholder="Senha"  minlength="5" maxlength="10" required>
