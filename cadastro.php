@@ -34,13 +34,7 @@ session_start();
   <script src="https://kit.fontawesome.com/bf7e05c402.js" crossorigin="anonymous"></script>
     
     
-    <script type="text/javascript">
-    $(document).ready(function(){
-      $('#TELEFONE').mask('(00) 0000-0000');
-     $('#CPF').mask('000.000.000-00');
-      $('#RG').mask('00000.000-0');      
-     });
-</script>
+   
     
     <title>Sistema de estágio</title>
     <link rel="stylesheet" href="cadastro.css">
@@ -87,6 +81,22 @@ endif;
   
     <input type="submit" value="ENVIAR" placeholder="ENVIAR">
   </form>
+  <script>
+        function myFunction(){
+            confirm("Confirmar o envio!");
+        }
+         $(document).ready(function(){
+                
+             $('#CPF').mask('000.000.000-00');
+             $('#RG').mask('00000.000-0');
+             $('#TELEFONE').mask('(00) 00000-0000');
+            
+            
+            }
+           )
+       
+
+      </script>
 </div>
 
 </body>
