@@ -9,17 +9,12 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>s
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
--->
+
 <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap"
       rel="stylesheet"
     />     
 <link rel="shortcut icon" href="favicon_io (1)/favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
   <!-- Estilos -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="css/styles.css">
@@ -32,6 +27,26 @@ session_start();
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/bf7e05c402.js" crossorigin="anonymous"></script>
+  <script src="js/jquery-3.4.1.min.js" type="text/javascript" ></script>
+        <script src="js/jquery.mask.min.js" type="text/javascript" ></script>
+        <script src="js/bootstrap.min.js" type="text/javascript" ></script>
+        <script src="js/bootstrap-notify.min.js" type="text/javascript" ></script>
+  <script>
+        function myFunction(){
+            confirm("Confirmar o envio!");
+        }
+         $(document).ready(function(){
+                
+             $('#CPF').mask('000.000.000-00');
+             $('#RG').mask('00.000.000');
+             $('#TELEFONE').mask('(00) 00000-0000');
+            
+            
+            }
+           )
+       
+
+      </script>
     
     
    
@@ -65,9 +80,9 @@ endif;
     <input type="text" id="NOME" name="NOME" placeholder="Nome Completo">
 
    <input type="email" id="EMAIL" name="EMAIL" placeholder="E-mail">
-    <input type="text" id="RG" name="RG" placeholder="RG">
- <input type="text" id="CPF" name="CPF" placeholder="CPF" minlength="14"  maxlength="14">
-<input type="text" id="TELEFONE" name="TELEFONE" placeholder="Telefone">
+    <input type="text" id="RG" name="RG" placeholder="RG" minlength="8" maxlength="8">
+ <input type="text" id="CPF" name="CPF" placeholder="CPF" minlength="11"  maxlength="11">
+<input type="text" id="TELEFONE" name="TELEFONE" placeholder="Telefone" minlength="11" maxlength="11">
  
     <input type="password" id="SENHA" name="SENHA" placeholder="Senha"  minlength="5" maxlength="10" required>
     
@@ -81,22 +96,7 @@ endif;
   
     <input type="submit" value="ENVIAR" placeholder="ENVIAR">
   </form>
-  <script>
-        function myFunction(){
-            confirm("Confirmar o envio!");
-        }
-         $(document).ready(function(){
-                
-             $('#CPF').mask('000.000.000-00');
-             $('#RG').mask('00000.000-0');
-             $('#TELEFONE').mask('(00) 00000-0000');
-            
-            
-            }
-           )
-       
-
-      </script>
+ 
 </div>
 
 </body>

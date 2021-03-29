@@ -10,14 +10,23 @@ $RG = filter_input(INPUT_POST, 'RG', FILTER_SANITIZE_STRING);
 $TELEFONE = filter_input(INPUT_POST, 'TELEFONE', FILTER_SANITIZE_STRING);
 $FUNCAO = filter_input(INPUT_POST, 'FUNCAO', FILTER_SANITIZE_STRING);
 
+
 //verificação de cpf valido
 if(isset( $CPF)){
 	$CPF = preg_replace("/[^0-9]/", "",  $CPF);
 	$CPF = str_pad( $CPF, 11, '0', STR_PAD_LEFT);
+	$RG = preg_replace("/[^0-9]/", "",  $RG);
+	$RG = str_pad( $RG, 8, '0', STR_PAD_LEFT);
+	$TELEFONE = preg_replace("/[^0-9]/", "",  $TELEFONE);
+	$TELEFONE = str_pad( $TELEFONE, 11, '0', STR_PAD_LEFT);
+	
 
 
    if (strlen($CPF) != 11) {
 	   $erro= 1;
+	   $_SESSION['msg'] = "<p style='color:red;'>Usuário não foi cadastrado, CPF invalido</p>";
+	   echo "<script type='javascript'>alert('CPF invalido');";
+	   header("Location: cadastro.php");
    }
   
    else if ( $CPF== '00000000000' || 
@@ -31,6 +40,10 @@ if(isset( $CPF)){
 		$CPF == '88888888888' || 
 		$CPF == '99999999999') {
 	   $erro= 1;
+	   $_SESSION['msg'] = "<p style='color:red;'>Usuário não foi cadastrado, CPF invalido</p>";
+			echo "<script type='javascript'>alert('CPF invalido');";
+			header("Location: cadastro.php");
+
 	} else {   
 	   for ($t = 9; $t < 11; $t++) {
 
@@ -41,6 +54,8 @@ if(isset( $CPF)){
 		   if ( $CPF{$c} != $d) {
 				$erro= 1;
 			$_SESSION['msg'] = "<p style='color:red;'>Usuário não foi cadastrado, CPF invalido</p>";
+			
+			
 	header("Location: cadastro.php");
 
 		   }
@@ -56,10 +71,13 @@ $result_usuario = "INSERT INTO usuario (cpf,nome,email,senha,rg,telefone,funcao)
 $resultado_usuario = mysqli_query($conn, $result_usuario);
 
 if(mysqli_insert_id($conn)){
-	$_SESSION['msg'] = "<p style='color:green;'>Usuário cadastrado com sucesso.</p>";
-	header("Location: Login.html");
-}else{
 	$_SESSION['msg'] = "<p style='color:red;'>Usuário não foi cadastrado, erro de conexao.</p>";
+	
 	header("Location: cadastro.php");
+}else{
+	$_SESSION['msg'] = "<p style='color:green;'>Usuário cadastrado com sucesso.</p>";
+
+    //echo "javascript:window.location='index.php';</script>";
+	header("Location: Login.html");
 }
 
