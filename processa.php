@@ -71,11 +71,13 @@ $result_usuario = "INSERT INTO usuario (cpf,nome,email,senha,rg,telefone,funcao)
 $resultado_usuario = mysqli_query($conn, $result_usuario);
 
 if(mysqli_insert_id($conn)){
-	$_SESSION['msg'] = "<p style='color:red;'>Usuário não foi cadastrado, erro de conexao.</p>";
+	$_SESSION['msg'] = "<div class='alert alert-danger' role='alert'>Usuário não foi cadastrado, erro de conexao. </div>";
 	
 	header("Location: cadastro.php");
 }else{
-	$_SESSION['msg'] = "<p style='color:green;'>Usuário cadastrado com sucesso.</p>";
+	$_SESSION['msg'] = "<div class='alert alert-success' role='alert'>
+	<h4 class='alert-heading'>Usuário cadastrado com  sucesso!</h4>
+  </div>";
 
     //echo "javascript:window.location='index.php';</script>";
 	header("Location: Login.html");

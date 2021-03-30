@@ -12,7 +12,7 @@
 session_start();
 
 include('conexao.php');
-$consulta= "SELECT * FROM usuario WHERE cpf= CPF";
+$consulta= "SELECT * FROM usuario WHERE cpf = '$_SESSION[CPF]'; ";
 $con= mysqli_query($conn, $consulta);
 
     
