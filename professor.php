@@ -4,7 +4,7 @@ session_start();
 include('conexao.php');
 
 $consulta= "SELECT * FROM usuario WHERE cpf = '$_SESSION[CPF]'; ";
-$consultaeS= "SELECT * FROM estagio; ";
+$consultaeS= "SELECT * FROM estagio WHERE cpf_usuario = '$_SESSION[CPF]'; ";
 $con= mysqli_query($conn, $consulta);
 $con2= mysqli_query($conn, $consulta);
 $con3= mysqli_query($conn, $consultaeS);
@@ -34,12 +34,12 @@ $con3= mysqli_query($conn, $consultaeS);
 			
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="sideNav">
             <a class="navbar-brand js-scroll-trigger" href="#page-top">
-                <img src="imagens/LOGO.png" alt="log" class="imagem img-fluid mb-1"       />
+                <img src="imagens/LOGO.png" alt="log" class="imagem img-fluid   "       />
 				<P>
 				
                 <span class="d-none d-lg-block">
 				 
-                   <img src="imagens/icon.jpg" alt="ICONE" class="imagem img-fluid img-profile rounded-circle mx-auto mb-1"
+                   <img src="imagens/icon.jpg" alt="ICONE" class="imagem img-fluid img-profile rounded-circle mx-auto mb-2"
         
       />
                 </span>
@@ -58,10 +58,6 @@ $con3= mysqli_query($conn, $consultaeS);
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#estagio">Cadastrar Estágio</a>
                     </li>
-					
-					<li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#indica">Indicar Professor Orientador</a>
-                    </li>
 
                   
                     <li class="nav-item">
@@ -74,17 +70,18 @@ $con3= mysqli_query($conn, $consultaeS);
 		  <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="about">
 
 				<div class="w-100">
-                	  <h3 class="mb-2 " >Bem vindo(a) 
+                	  <h2 class="mb-5 " >Bem vindo(a) 
 					  <ul class="list-group">
   
    <?php while($dado = $con -> fetch_array() ){?>
-                     <?php echo $dado["nome"];?> </h3><p>
+                    
+                        <?php echo $dado["nome"];?> </h2><p>
   <li class="list-group-item list-group-item-secondary">
  
                 
   
 						
-                      <h4>  CPF:   <?php echo $dado["cpf"]; ?><br>
+                      <h4>  CPF:   <?php echo $dado["cpf"];?><br>
                         E-MAIL:   <?php echo $dado["email"];?><br>
                         TELEFONE:    <?php echo $dado["telefone"];?> 
                         
@@ -102,66 +99,32 @@ $con3= mysqli_query($conn, $consultaeS);
       
       <th scope="col">Nome do Aluno</th>
       <th scope="col">Matricula</th>
-	  <th scope="col">Professor Orientador</th>
-	   <th scope="col">Nome Empresa</th>
       <th scope="col">Início Estágio</th>
 	  <th scope="col">Fim Estágio</th>
-	  
+	  <th scope="col">Professor Orientador</th>
 	  <th scope="col">Carga horária</th>
-	         
-			   <?php if ($con3-> num_rows> 0 ) {
-     while($dado = $con3 -> fetch_array() ){
-
-                         $id= $dado["idestagio"];
-                   
-                  
-                            echo "<tr>";
-                            echo "<td>" . $dado["nome_aluno"] . "</td>";
-							echo "<td>" . $dado["matricula"] . "</td>";
-                            echo "<td>" . $dado["nome_orientador"] . "</td>";
-                            echo "<td>" . $dado["nome_empresa"] . "</td>";
-                            echo "<td>" . $dado["inicio_estagio"] . "</td>";
-							 echo "<td>" . $dado["fim_estagio"] . "</td>";
-							  echo "<td>" . $dado["carga_horaria"] . "</td>";
-                          
-                            
-                           echo "</tr>"; 
-                        } 
-                        
-                           
-                        
-                    }
-                 
-                                   
-                        
-                
-                ?>
-      
+    </tr>
   </thead>
- 
+  <tbody>
+   
+   
+    
+  </tbody>
 </table>	
- <p>
- <p>
-<br>
-<br>
-                <button  class="btn btn-success">Solicitar Indicação de Professor </button>
+ 
+				
+               
 	
                  </div>
 			
-			
-			
-			
-			
-							
                
             </section>
-			 <section class="resume-section p-3 p-lg-4 d-flex justify-content-left" id="perfil">
+			 <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="perfil">
 			  <div class="w-100">
-			   
 				 <form action="alterar.php">
             <?php while($dado = $con2 -> fetch_array() ){?>
                  <div class="form-group">
-                Nome:<input type="text" class="form-control"name= "nome" value="<?php echo $dado["nome"];?>"/> <br/>
+                Nome: <input type="text" class="form-control"name= "nome" value="<?php echo $dado["nome"];?>"/> <br/>
 				 </div>
 				 <div class="form-group">
                 CPF: <input type="text"class="form-control" name= "cpf" value="<?php echo $dado["cpf"];?>"/> <br/>
@@ -178,8 +141,7 @@ $con3= mysqli_query($conn, $consultaeS);
 				 <div class="form-group">
                 Senha: <input type="text" class="form-control"name= "senha" value="<?php echo $dado["senha"];?>"/> <br/>
 				 </div>
-                <input type= "submit" value= "Alterar"class="btn btn-primary"/>
-                <a class="btn btn-primary" href="status.php" role="button">Excluir conta</a>
+                <input type= "submit" value= "Alterar"/>
                 <?php  } ?>
 
             </form>
@@ -220,7 +182,7 @@ $con3= mysqli_query($conn, $consultaeS);
 						 <div class="form-group">
                             <input type="text" class="form-control" id="NOMEO" name="NOMEO" aria-describedby="emailHelp" placeholder="Nome do Professor Orientador" required>
                         </div>
- 
+                        <input type="hidden" name="cpf" value="<?php echo $cpf; ?>" /> 
                        
                         <button type="submit" class="btn btn-primary">Enviar</button>
                          <br>
@@ -233,42 +195,7 @@ $con3= mysqli_query($conn, $consultaeS);
                
             </section>
 			 
-		  <section class="resume-section p-3 p-lg-5 d-flex justify-content-left" id="indica">
-                <div class="w-100">
-                    <h3 class="mb-5 " >Indicar Professor Orientador</h3>
-                    <form action="email" method="post">
- 
-  <div class="form-group">
-    
-    <select  type="email"class="form-control" id="exampleFormControlSelect1" name="email">
-      <option>coordenaçãoInf@gmail.com</option>
-      <option>coordenaçãoele@gmail.com</option>
-      <option>coordenaçãomec@gmail.com</option>
-	   <option>camilalindamachado9@gmail.com</option>
-    
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlSelect1">Professores disponíveis</label>
-    <select  type="email"class="form-control" id="exampleFormControlSelect1" name="name">
-      <option>Luis Augusto</option>
-      <option>Gabriella Barbosa</option>
-      <option>Tatiana Barbosa</option>
-    
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Mensagem</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="message"></textarea>
-  </div>
-     <button type="submit" class="btn btn-primary">Enviar</button>
-</form>
-				
-
-                </div>
-               
-            </section>
-			 
+		  
 		
        
 	
@@ -285,4 +212,4 @@ $con3= mysqli_query($conn, $consultaeS);
     
             </body>
 </html>
-</DOCTYPE HTLM>
+</DOCTYPE>

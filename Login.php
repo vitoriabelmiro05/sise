@@ -24,7 +24,7 @@ $sql= "SELECT * FROM usuario WHERE cpf = '{$CPF}'; ";
 
  if($row==1){
      $_SESSION['CPF']= $CPF;
-     header('Location: painel.php');
+     header('Location: verfica_status.php');
      exit();
 
  } else{
